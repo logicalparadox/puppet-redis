@@ -3,14 +3,6 @@ class redis($redis_ver = '2.4.13') {
   $redis_tar = "redis-$redis_ver.tar.gz"
   $redis_dl = "http://redis.googlecode.com/files/$redis_tar"
 
-  package { "curl":
-    ensure => "installed"
-  }
-
-  package { "build-essential":
-    ensure => "installed"
-  }
-
   group { "redis":
     ensure => present
   }
@@ -29,7 +21,6 @@ class redis($redis_ver = '2.4.13') {
       command       => "curl -o $redis_tar $redis_dl"
     , cwd           => '/tmp'
     , creates       => "/tmp/${redis_tar}"
-    , require       => Package['curl']
     , path          => ['/usr/bin/', '/bin/']
   }
   
@@ -64,7 +55,5 @@ class redis($redis_ver = '2.4.13') {
     , path          => [ '/usr/bin/', '/bin/' ]
     , unless        => "which redis-server"
   }
-
-  
 
 }
