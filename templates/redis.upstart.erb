@@ -1,0 +1,8 @@
+description "redis server <%= port =>"
+
+start on runlevel [23]
+stop on shutdown
+
+exec sudo -u redis /opt/redis/bin/redis-server /opt/redis/redis_<%= port %>.conf
+
+respawn
