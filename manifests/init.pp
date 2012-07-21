@@ -65,7 +65,7 @@ class redis($redis_ver = '2.4.14') {
                         , Package['build-essential']
                         , User['redis'] ]
     , timeout       => 0
-    , path          => [ '/usr/bin/', '/bin/' ]
+    , path          => [ '/usr/bin/', '/bin/', '/opt/redis/bin' ]
     , unless        => "which redis-server"
   }
 
