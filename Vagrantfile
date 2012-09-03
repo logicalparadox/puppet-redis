@@ -3,6 +3,7 @@
 
 Vagrant::Config.run do |config|
   config.vm.box = "precise64"
+  config.vm.network :hostonly, "33.33.33.10"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.host_name = 'redis'
   config.vm.share_folder "redis", "/tmp/vagrant-puppet/modules/redis", "."
