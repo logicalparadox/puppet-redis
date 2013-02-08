@@ -22,9 +22,13 @@ dir /opt/redis/
 # masterauth <master-password>
 
 slave-serve-stale-data yes
+slave-read-only yes
 
 # repl-ping-slave-period 10
 # repl-timeout 60
+
+repl-disable-tcp-nodelay no
+slave-priority 100
 
 ################################## SECURITY ###################################
 
@@ -50,21 +54,23 @@ no-appendfsync-on-rewrite no
 auto-aof-rewrite-percentage 100
 auto-aof-rewrite-min-size 64mb
 
+################################ LUA SCRIPTING  ###############################
+
+lua-time-limit 5000
+
+################################ REDIS CLUSTER  ###############################
+
+# cluster-enabled yes
+# cluster-config-file nodes-<%= port %>.conf
+
 ################################## SLOW LOG ###################################
 
 slowlog-log-slower-than 10000
 slowlog-max-len 128
 
-################################ VIRTUAL MEMORY ###############################
+############################# Event notification ##############################
 
-vm-enabled no
-# vm-enabled yes
-
-vm-swap-file /tmp/redis-<%= port %>.swap
-vm-max-memory 0
-vm-page-size 32
-vm-pages 134217728
-vm-max-threads 4
+notify-keyspace-events ""
 
 ############################### ADVANCED CONFIG ###############################
 
@@ -76,3 +82,7 @@ set-max-intset-entries 512
 zset-max-ziplist-entries 128
 zset-max-ziplist-value 64
 activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
