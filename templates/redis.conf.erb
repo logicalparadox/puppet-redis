@@ -27,7 +27,6 @@ slave-read-only yes
 # repl-ping-slave-period 10
 # repl-timeout 60
 
-repl-disable-tcp-nodelay no
 slave-priority 100
 
 ################################## SECURITY ###################################
@@ -68,10 +67,6 @@ lua-time-limit 5000
 slowlog-log-slower-than 10000
 slowlog-max-len 128
 
-############################# Event notification ##############################
-
-notify-keyspace-events ""
-
 ############################### ADVANCED CONFIG ###############################
 
 hash-max-zipmap-entries 512
@@ -85,4 +80,3 @@ activerehashing yes
 client-output-buffer-limit normal 0 0 0
 client-output-buffer-limit slave 256mb 64mb 60
 client-output-buffer-limit pubsub 32mb 8mb 60
-hz 10
