@@ -41,6 +41,7 @@ define redis::service(
                     , File['redis_upstart']
                     , File["/etc/init.d/redis-server-${port}"]
                     , File['redis_logfile'] ]
+    , subscribe => File["/etc/init.d/redis-server-${port}"]
   }
 
 }
