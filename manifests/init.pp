@@ -1,4 +1,4 @@
-class redis($redis_ver = '2.4.14') {
+class redis($redis_ver = '2.6.9') {
 
   $redis_tar = "redis-$redis_ver.tar.gz"
   $redis_dl = "http://redis.googlecode.com/files/$redis_tar"
