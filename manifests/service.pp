@@ -1,6 +1,6 @@
 define redis::service(
     $port = '6379'
-  , $config_bind = '127.0.0.1'
+  , $config_bind = '0.0.0.0'
   , $config_loglevel = 'notice'
   , $config_timeout = '300'
   , $ensure = 'running'
