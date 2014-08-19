@@ -1,7 +1,7 @@
-class redis($redis_ver = '2.4.14') {
+class redis($redis_ver = '2.8.13') {
 
   $redis_tar = "redis-$redis_ver.tar.gz"
-  $redis_dl = "http://redis.googlecode.com/files/$redis_tar"
+  $redis_dl = "http://download.redis.io/releases/$redis_tar"
 
   if defined(Package['curl']) == false {
     package { "curl":
